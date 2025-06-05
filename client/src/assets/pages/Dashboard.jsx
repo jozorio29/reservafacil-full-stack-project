@@ -8,6 +8,7 @@ import { FiLogOut } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { io } from "socket.io-client";
+import { server } from "@/constants/config";
 
 const socket = io(import.meta.env.VITE_SERVER_URL);
 
@@ -27,12 +28,9 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchResumen = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/api/dashboard/resumen",
-          {
-            withCredentials: true, // ✅ necesario para enviar la cookie
-          }
-        );
+        const response = await axios.get(`${server}/api/dashboard/resumen`, {
+          withCredentials: true, // ✅ necesario para enviar la cookie
+        });
         setResumen(response.data);
         setNombreUsuario(response.data.nombreUsuario);
       } catch (error) {
@@ -65,7 +63,7 @@ const Dashboard = () => {
     const obtenerNotificaciones = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:8000/api/barberos/notificaciones-barbero",
+          `${server}/api/barberos/notificaciones-barbero`,
           {
             withCredentials: true,
           }
@@ -82,7 +80,7 @@ const Dashboard = () => {
   const handleLogout = async () => {
     try {
       await axios.post(
-        "http://localhost:8000/api/auth/logout",
+        `${server}/api/auth/logout`,
         {},
         { withCredentials: true }
       );

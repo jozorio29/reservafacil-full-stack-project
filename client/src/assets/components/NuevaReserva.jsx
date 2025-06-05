@@ -8,6 +8,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { server } from "@/constants/config";
 import { TextField } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -32,10 +33,10 @@ const NuevaReserva = ({ cargarReservas }) => {
     const fetchData = async () => {
       try {
         const [barberosRes, serviciosRes] = await Promise.all([
-          axios.get("http://localhost:8000/api/usuarios/barberos", {
+          axios.get(`${server}/api/usuarios/barberos`, {
             withCredentials: true,
           }),
-          axios.get("http://localhost:8000/api/servicios", {
+          axios.get(`${server}/api/servicios`, {
             withCredentials: true,
           }),
         ]);
@@ -60,7 +61,7 @@ const NuevaReserva = ({ cargarReservas }) => {
     const fecha = fechaSeleccionada.toLocaleDateString("sv-SE");
     try {
       const res = await axios.get(
-        `http://localhost:8000/api/barberos/${barberoSeleccionado}/disponibilidad?fecha=${fecha}`,
+        `${server}/api/barberos/${barberoSeleccionado}/disponibilidad?fecha=${fecha}`,
         { withCredentials: true }
       );
       setBloques(res.data.bloquesDisponibles);
@@ -76,7 +77,7 @@ const NuevaReserva = ({ cargarReservas }) => {
 
     try {
       await axios.post(
-        "http://localhost:8000/api/reservas",
+        `${server}/api/reservas`,
         {
           barbero: barberoSeleccionado,
           servicio: servicioSeleccionado,

@@ -17,6 +17,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../../config/firebase";
 import { FcGoogle } from "react-icons/fc";
 import FormularioRegistro from "./FormularioRegistro";
+import { server } from "@/constants/config";
 
 const Login = () => {
   const [correo, setCorreo] = useState("");
@@ -40,7 +41,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/api/auth/login",
+        `${server}/api/auth/login`,
         {
           correo,
           password,
@@ -74,7 +75,7 @@ const Login = () => {
 
       // Enviar token al servidor
       const response = await axios.post(
-        "http://localhost:8000/api/auth/google-login",
+        `${server}/api/auth/google-login`,
         { idToken },
         { withCredentials: true }
       );

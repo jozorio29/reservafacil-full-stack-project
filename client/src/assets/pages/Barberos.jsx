@@ -1,5 +1,6 @@
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { server } from "@/constants/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
 
@@ -10,12 +11,9 @@ const Barberos = () => {
   useEffect(() => {
     const fetchBarberos = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:8000/api/usuarios/barberos",
-          {
-           withCredentials: true,
-          }
-        );
+        const response = await axios.get(`${server}/api/usuarios/barberos`, {
+          withCredentials: true,
+        });
         setBarberos(response.data);
       } catch (error) {
         setError("No se pudieron cargar los barberos");

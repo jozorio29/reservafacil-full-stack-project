@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { server } from "@/constants/config";
 import { useNotificaciones } from "@/context/NotificacionContext";
 import axios from "axios";
 import { motion } from "framer-motion";
@@ -27,12 +28,9 @@ const PanelBarbero = () => {
 
   const cargarTurnos = async () => {
     try {
-      const res = await axios.get(
-        "http://localhost:8000/api/reservas/mis-turnos",
-        {
-          withCredentials: true,
-        }
-      );
+      const res = await axios.get(`${server}/api/reservas/mis-turnos`, {
+        withCredentials: true,
+      });
       setReservas(res.data);
     } catch (error) {
       console.error("Error al obtener los turnos:", error);
@@ -78,7 +76,7 @@ const PanelBarbero = () => {
     const marcarComoVisto = async () => {
       try {
         await axios.patch(
-          "http://localhost:8000/api/barberos/marcar-visto",
+          `${server}/api/barberos/marcar-visto`,
           {},
           {
             withCredentials: true,
@@ -96,7 +94,7 @@ const PanelBarbero = () => {
   const completarTurno = async (id) => {
     try {
       await axios.patch(
-        `http://localhost:8000/api/reservas/${id}/completar`,
+        `${server}/api/reservas/${id}/completar`,
         {},
         {
           withCredentials: true,

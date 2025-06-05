@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { server } from "@/constants/config";
 
 const Servicios = () => {
   const [servicios, setServicios] = useState([]);
@@ -9,12 +10,9 @@ const Servicios = () => {
     const fetchServicios = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get(
-          "http://localhost:8000/api/servicios",
-          {
-            withCredentials: true,
-          }
-        );
+        const response = await axios.get(`${server}/api/servicios`, {
+          withCredentials: true,
+        });
         setServicios(response.data);
       } catch (error) {
         console.error("Error al obtener los servicios:", error);

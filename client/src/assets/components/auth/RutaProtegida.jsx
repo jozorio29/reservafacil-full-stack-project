@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import axios from "axios";
+import { server } from "@/constants/config";
 
 const RutaProtegida = () => {
   const [autenticado, setAutenticado] = useState(null);
@@ -8,7 +9,7 @@ const RutaProtegida = () => {
   useEffect(() => {
     const verificarAutenticacion = async () => {
       try {
-        await axios.get("http://localhost:8000/api/dashboard/resumen", {
+        await axios.get(`${server}/api/dashboard/resumen`, {
           withCredentials: true,
         });
         setAutenticado(true);
