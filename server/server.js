@@ -40,6 +40,10 @@ app.use("/api/usuarios", userRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/barberos", barberoRoutes);
 
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
+
 io.on("connection", (socket) => {
   socket.on("unirse-barbero", (barberoId) => {
     socket.join(barberoId);
