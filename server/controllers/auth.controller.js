@@ -36,6 +36,8 @@ const registroUsuario = async (req, res) => {
       rol,
     });
 
+    console.log("Nuevo usuario registrado:", nuevoUsuario);
+
     const token = generarToken(nuevoUsuario);
 
     res.cookie("token", token, cookieOptions);
@@ -54,6 +56,7 @@ const registroUsuario = async (req, res) => {
 };
 
 const loginUsuario = async (req, res) => {
+  console.log("🟢 Petición recibida en /api/auth/login"); // 👈 Agregá esto
   const { correo, password } = req.body;
 
   if (!correo || !password) {
