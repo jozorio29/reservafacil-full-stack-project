@@ -1,0 +1,27 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# Vite
+dist/
+.vite/
+
+# Build outputs
+build/
+
+# OS files
+.DS_Store
+
+# Others
+*.env.*
