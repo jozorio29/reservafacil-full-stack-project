@@ -71,8 +71,6 @@ const Login = () => {
       const result = await signInWithPopup(auth, provider);
       const idToken = await result.user.getIdToken(); // 🔐 Token de Firebase
 
-      console.log("ID token:", idToken);
-
       // Enviar token al servidor
       const response = await axios.post(
         `${server}/api/auth/google-login`,
