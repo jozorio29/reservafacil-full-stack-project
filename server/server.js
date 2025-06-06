@@ -40,6 +40,17 @@ app.use("/api/usuarios", userRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/barberos", barberoRoutes);
 
+// Esto es necesario si estás usando ESModules (type: "module" en package.json)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// Servir frontend compilado (por ejemplo si usás Vite o React build)
+app.use(express.static(path.join(__dirname, "client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+});
+
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
