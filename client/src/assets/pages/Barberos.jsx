@@ -3,10 +3,14 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { server } from "@/constants/config";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { ArrowLeftCircle } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Barberos = () => {
   const [barberos, setBarberos] = useState([]);
   const [error, setError] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchBarberos = async () => {
@@ -23,11 +27,25 @@ const Barberos = () => {
   }, []);
 
   return (
-    <div className="max-w-4xl mx-auto py-10 px-4">
+    <div className="max-w-4xl mx-auto py-10 px-4 relative">
+      {/* Encabezado estilo app */}
+      <div className="relative mb-8">
+        {/* Botón Volver alineado a la izquierda */}
+        <button
+          onClick={() => navigate("/dashboard")}
+          className="absolute left-0 top-1/2 -translate-y-1/2 flex items-center gap-2 px-4 py-2 bg-neutral-200 hover:bg-neutral-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-gray-800 dark:text-white rounded-full shadow-md transition"
+        >
+          <ArrowLeftCircle size={22} />
+          <span className="font-medium">Volver</span>
+        </button>
+
+        {/* Título centrado */}
+        <h1 className="text-center text-3xl font-bold text-gray-800 dark:text-white">
+          Nuestros Barberos
+        </h1>
+      </div>
+
       <Card>
-        <CardHeader>
-          <CardTitle className="text-2xl">Nuestros Barberos</CardTitle>
-        </CardHeader>
         <CardContent>
           {error && (
             <Alert variant="destructive" className="mb-4">
@@ -35,6 +53,7 @@ const Barberos = () => {
               <AlertDescription>{error}</AlertDescription>
             </Alert>
           )}
+
           {barberos.length === 0 ? (
             <p>No hay barberos disponibles en este momento.</p>
           ) : (

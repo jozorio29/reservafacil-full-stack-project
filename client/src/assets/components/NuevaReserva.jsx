@@ -101,7 +101,7 @@ const NuevaReserva = ({ cargarReservas }) => {
           className="flex items-center gap-2 px-4 py-2 bg-neutral-200 hover:bg-neutral-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 text-gray-800 dark:text-white rounded-full shadow-md transition duration-300"
         >
           <ArrowLeftCircle size={22} />
-          <span className="font-medium"></span>
+          <span className="font-medium">Volver</span>
         </button>
       </div>
 
