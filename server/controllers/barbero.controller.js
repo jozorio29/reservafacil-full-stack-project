@@ -1,4 +1,5 @@
 import Reservation from "../models/reservation.model.js";
+import { DateTime } from "luxon";
 
 const obtenerDisponibilidad = async (req, res) => {
   const { id } = req.params;
@@ -17,17 +18,22 @@ const obtenerDisponibilidad = async (req, res) => {
   }
 
   try {
-    const inicioJornada = 7; // 7 AM
-    const finJornada = 20; // 8 PM
+    const zonaHoraria = "America/Asuncion";
+
+    const inicioJornada = DateTime.fromISO(`${fecha}T07:00`, {
+      zone: zonaHoraria,
+    });
+    const finJornada = DateTime.fromISO(`${fecha}T19:00`, {
+      zone: zonaHoraria,
+    });
     const duracionBloque = 40; // 40 minutos
 
+    console.log("🕒 Inicio jornada:", inicioJornada.toISO());
+    console.log("🕒 Fin jornada:", finJornada.toISO());
+
     // Obtener las reservas del barbero ese dia
-    const inicioDia = new Date(
-      `${fecha}T${inicioJornada.toString().padStart(2, "0")}:00:00`
-    );
-    const finDia = new Date(
-      `${fecha}T${finJornada.toString().padStart(2, "0")}:00:00`
-    );
+    const inicioDia = inicioJornada.toUTC().toJSDate();
+    const finDia = finJornada.toUTC().toJSDate();
 
     const reservas = await Reservation.find({
       barbero: id,
@@ -81,6 +87,7 @@ const obtenerDisponibilidad = async (req, res) => {
     }
 
     res.json({ bloquesDisponibles });
+    console.log("Disponibilidad obtenida", bloquesDisponibles);
   } catch (error) {
     res
       .status(500)

@@ -20,7 +20,7 @@ import "./utils/twilio.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename).normalize().normalize("NFC");
+const __dirname = path.dirname(__filename);
 
 const app = express();
 const httpServer = createServer(app);
