@@ -20,11 +20,7 @@ import "./utils/twilio.js";
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path
-  .dirname(__filename)
-  .normalize()
-  .normalize("NFC");
-console.log("🛠️ __dirname es:", __dirname);
+const __dirname = path.dirname(__filename).normalize().normalize("NFC");
 
 const app = express();
 const httpServer = createServer(app);
@@ -54,8 +50,6 @@ app.use("/api/barberos", barberoRoutes);
 // Servir frontend compilado (por ejemplo si usás Vite o React build)
 if (process.env.NODE_ENV === "production") {
   const buildPath = path.resolve(__dirname, "../client/dist");
-
-  console.log("📦 STATIC PATH:", buildPath); 
 
   app.use(express.static(buildPath));
 
