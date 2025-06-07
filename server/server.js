@@ -19,6 +19,13 @@ import "./utils/twilio.js";
 
 dotenv.config();
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path
+  .dirname(__filename)
+  .normalize()
+  .normalize("NFC");
+console.log("🛠️ __dirname es:", __dirname);
+
 const app = express();
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
@@ -43,15 +50,17 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/barberos", barberoRoutes);
 
 // Esto es necesario si estás usando ESModules (type: "module" en package.json)
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Servir frontend compilado (por ejemplo si usás Vite o React build)
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, "client/dist")));
+  const buildPath = path.resolve(__dirname, "../client/dist");
+
+  console.log("📦 STATIC PATH:", buildPath); 
+
+  app.use(express.static(buildPath));
 
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+    res.sendFile(path.join(buildPath, "index.html"));
   });
 }
 
