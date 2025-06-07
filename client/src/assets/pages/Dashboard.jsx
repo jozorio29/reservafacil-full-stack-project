@@ -26,6 +26,7 @@ const Dashboard = () => {
     useNotificaciones();
 
   useEffect(() => {
+    console.log("🌀 useEffect montado en Dashboard");
     const fetchResumen = async () => {
       try {
         const response = await axios.get(`${server}/api/dashboard/resumen`, {
