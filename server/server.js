@@ -47,15 +47,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // Servir frontend compilado (por ejemplo si usás Vite o React build)
-app.use(express.static(path.join(__dirname, "client/dist")));
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, "client/dist")));
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client/dist", "index.html"));
+  });
+}
+
+app.use((req, res, next) => {
+  console.log(`🌐 [${req.method}] ${req.originalUrl}`);
+  next();
 });
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
 io.on("connection", (socket) => {
   socket.on("unirse-barbero", (barberoId) => {

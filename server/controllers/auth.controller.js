@@ -59,6 +59,8 @@ const loginUsuario = async (req, res) => {
   console.log("🟢 Petición recibida en /api/auth/login"); // 👈 Agregá esto
   const { correo, password } = req.body;
 
+  console.log("📥 Intento de login con:", correo); // 🟢
+
   if (!correo || !password) {
     return res
       .status(400)
@@ -79,9 +81,11 @@ const loginUsuario = async (req, res) => {
     }
 
     const token = generarToken(usuario);
+    console.log("✅ Login exitoso. Generando cookie...");
 
     // Configuración de cookie segura
     res.cookie("token", token, cookieOptions);
+    console.log("🍪 Cookie enviada con opciones:", cookieOptions);
 
     // Omitimos la contraseña antes de enviar al frontend
     const { password: _, ...usuarioSinPassword } = usuario.toObject();
