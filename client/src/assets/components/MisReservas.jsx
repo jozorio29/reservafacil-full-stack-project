@@ -110,7 +110,9 @@ const MisReservas = () => {
                   </p>
                   <p>
                     <strong>Fecha:</strong>{" "}
-                    {new Date(reserva.fechaHora).toLocaleString("es-PY")}
+                    {new Date(reserva.fechaHora).toLocaleString("es-PY", {
+                      timeZone: "America/Asuncion",
+                    })}
                   </p>
                   <p>
                     <strong>Estado:</strong>{" "}
