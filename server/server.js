@@ -51,6 +51,9 @@ app.use("/api/barberos", barberoRoutes);
 if (process.env.NODE_ENV === "production") {
   const buildPath = path.resolve(__dirname, "../client/dist");
 
+console.log("Dirname:", buildPath);
+
+
   app.use(express.static(buildPath));
 
   app.get("*", (req, res) => {
@@ -63,9 +66,9 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
+app.get("/", (req, res) => {
+  res.send("Hello World!");
+});
 
 io.on("connection", (socket) => {
   socket.on("unirse-barbero", (barberoId) => {

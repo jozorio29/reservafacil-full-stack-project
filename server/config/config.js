@@ -16,7 +16,11 @@ const conectarDB = async () => {
 };
 
 const corsOptions = {
-  origin: ["http://localhost:5173", process.env.CLIENT_URL], // Reemplaza con la URL de tu aplicación React
+  origin: [
+    "http://localhost:5173",
+    "http://localhost:4173",
+    process.env.CLIENT_URL,
+  ], // Reemplaza con la URL de tu aplicación React
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true,
 };
