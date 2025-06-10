@@ -51,7 +51,7 @@ const Login = () => {
           withCredentials: true,
         }
       );
-      console.log("✅ Login exitoso:", res.data);
+      console.log("✅ Login exitoso:", response.data);
       const { usuario } = response.data;
       login(usuario);
 
