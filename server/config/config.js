@@ -23,6 +23,7 @@ const corsOptions = {
   ], // Reemplaza con la URL de tu aplicación React
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
   credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
 };
 
 export { conectarDB, corsOptions };
