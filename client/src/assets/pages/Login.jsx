@@ -59,7 +59,7 @@ const Login = () => {
 
       setTimeout(() => {
         navigate("/dashboard");
-      }, 1000);
+      }, 3000);
     } catch (error) {
       const mensaje =
         error.response?.data?.message || "Error de inicio de sesión";
