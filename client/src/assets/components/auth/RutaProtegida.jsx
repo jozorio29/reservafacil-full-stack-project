@@ -9,13 +9,17 @@ const RutaProtegida = () => {
   useEffect(() => {
     const verificarAutenticacion = async () => {
       try {
-        await axios.get(`${server}/api/dashboard/resumen`, {
+        const res = await axios.get(`${server}/api/dashboard/resumen`, {
           withCredentials: true,
         });
         console.log("✅ Autenticado:", res.data);
         setAutenticado(true);
       } catch (error) {
-        console.error("⛔ Error autenticación:", error.response?.status, error.response?.data);
+        console.error(
+          "⛔ Error autenticación:",
+          error.response?.status,
+          error.response?.data
+        );
         setAutenticado(false);
       }
     };
