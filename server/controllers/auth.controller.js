@@ -45,6 +45,7 @@ const registroUsuario = async (req, res) => {
     const { password: _, ...usuarioSinPassword } = nuevoUsuario.toObject();
 
     res.status(201).json({
+      success: true,
       mensaje: "Usuario registrado exitosamente",
       usuario: usuarioSinPassword, // aqui ya incluye el rol del usuario
     });
@@ -91,6 +92,7 @@ const loginUsuario = async (req, res) => {
     const { password: _, ...usuarioSinPassword } = usuario.toObject();
 
     res.status(200).json({
+      success: true,
       mensaje: "Inicio de sesión exitoso",
       usuario: usuarioSinPassword,
     });
@@ -126,6 +128,7 @@ const loginConGoogle = async (req, res) => {
     // Configuración de cookie segura
     res.cookie("token", token, cookieOptions);
     res.status(200).json({
+      success: true,
       mensaje: "Inicio de sesión exitoso",
       usuario,
     });
