@@ -8,6 +8,7 @@ import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
 import { server } from "@/constants/config";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const FormularioRegistro = () => {
   const [loading, setLoading] = useState(false);
