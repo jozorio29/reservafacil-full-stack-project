@@ -9,6 +9,8 @@ const RutaProtegida = () => {
   useEffect(() => {
     const verificarAutenticacion = async () => {
       try {
+        await new Promise((resolve) => setTimeout(resolve, 1000)); // Simula un retraso de 1 segundo
+
         const res = await axios.get(`${server}/api/dashboard/resumen`, {
           withCredentials: true,
         });
