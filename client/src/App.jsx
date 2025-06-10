@@ -1,7 +1,7 @@
 import { Toaster } from "react-hot-toast";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import "./App.css";
-import { RutaProtegida } from "./assets/components/auth/RutaProtegida";
+// import { RutaProtegida } from "./assets/components/auth/RutaProtegida";
 import NuevaReserva from "./assets/components/NuevaReserva";
 import PanelBarbero from "./assets/components/PanelBarbero";
 import Servicios from "./assets/components/Servicios";
@@ -16,7 +16,7 @@ function App({ cargarReservas }) {
       <Routes>
         <Route path="/" element={<Login />} />
 
-        <Route element={<RutaProtegida />}>
+        {/* <Route element={<RutaProtegida />}>  */}
           <Route path="/barberos" element={<Barberos />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/servicios" element={<Servicios />} />
@@ -26,7 +26,7 @@ function App({ cargarReservas }) {
           />
           <Route path="/nueva-reserva" element={<MisReservas />} />
           <Route path="/panel-barbero" element={<PanelBarbero />} />
-        </Route>
+        {/* </Route> */}
       </Routes>
 
       <Toaster position="bottom-center" reverseOrder={false} />
