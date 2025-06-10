@@ -56,7 +56,10 @@ const Login = () => {
       login(usuario);
 
       toast.success("Inicio de sesión exitoso");
-      navigate("/dashboard");
+
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 300);
     } catch (error) {
       const mensaje =
         error.response?.data?.message || "Error de inicio de sesión";
