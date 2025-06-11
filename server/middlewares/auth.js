@@ -2,8 +2,8 @@ import jwt from "jsonwebtoken";
 import User from "../models/user.model.js";
 
 const proteger = async (req, res, next) => {
-  console.log("🔐 Cookies recibidas:", req.cookies); // agrega esto
-  const token = req.cookies.token;
+  console.log("🔐 Cookies recibidas:", req.cookie); // agrega esto
+  const token = req.cookie.token;
 
   console.log("🔐 Middleware proteger, token recibido:", token);
 
