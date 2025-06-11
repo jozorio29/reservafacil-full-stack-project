@@ -31,6 +31,9 @@ const Dashboard = () => {
       try {
         const response = await axios.get(`${server}/api/dashboard/resumen`, {
           withCredentials: true, // ✅ necesario para enviar la cookie
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
         setResumen(response.data);
         setNombreUsuario(response.data.nombreUsuario);
