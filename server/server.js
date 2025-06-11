@@ -1,4 +1,4 @@
-import compression from "compression";
+// import compression from "compression";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import dotenv from "dotenv";
@@ -27,7 +27,7 @@ const envMode = process.env.NODE_ENV || "development";
 
 // Middleware
 // app.use(helmet()); // Seguridad
-app.use(compression()); // Compresión de respuestas
+// app.use(compression()); // Compresión de respuestas
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(cookieParser());
