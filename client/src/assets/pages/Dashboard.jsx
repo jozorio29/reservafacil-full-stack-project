@@ -33,6 +33,7 @@ const Dashboard = () => {
           withCredentials: true, // ✅ necesario para enviar la cookie
           headers: {
             "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
           },
         });
         setResumen(response.data);
