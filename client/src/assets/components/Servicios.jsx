@@ -13,7 +13,7 @@ const Servicios = () => {
   useEffect(() => {
     const fetchServicios = async () => {
       try {
-        // const token = localStorage.getItem("token");
+        const token = localStorage.getItem("token");
         const response = await axios.get(`${server}/api/servicios`, {
           withCredentials: true,
         });
