@@ -28,7 +28,7 @@ const PanelBarbero = () => {
 
   const cargarTurnos = async () => {
     try {
-      const res = await axios.get(`${server}/api/reservas/mis-turnos`, {
+      const res = await axios.get("/api/reservas/mis-turnos", {
         withCredentials: true,
       });
       setReservas(res.data);
@@ -76,7 +76,7 @@ const PanelBarbero = () => {
     const marcarComoVisto = async () => {
       try {
         await axios.patch(
-          `${server}/api/barberos/marcar-visto`,
+          "/api/barberos/marcar-visto",
           {},
           {
             withCredentials: true,
@@ -94,7 +94,7 @@ const PanelBarbero = () => {
   const completarTurno = async (id) => {
     try {
       await axios.patch(
-        `${server}/api/reservas/${id}/completar`,
+        `/api/reservas/${id}/completar`,
         {},
         {
           withCredentials: true,

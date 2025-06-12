@@ -10,7 +10,7 @@ const RutaProtegida = () => {
   useEffect(() => {
     const verificarAutenticacion = async () => {
       try {
-        const res = await axios.get(`${server}/api/dashboard/resumen`, {
+        const res = await axios.get("/api/dashboard/resumen", {
           withCredentials: true,
         });
         console.log("✅ Autenticado:", res.data);

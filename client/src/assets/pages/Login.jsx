@@ -8,7 +8,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { server } from "@/constants/config";
+// import { server } from "@/constants/config";
 import { useAuth } from "@/context/AuthContext";
 import axios from "axios";
 import { signInWithPopup } from "firebase/auth";
@@ -42,7 +42,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        `${server}/api/auth/login`,
+        "/api/auth/login",
         {
           correo,
           password,
@@ -77,7 +77,7 @@ const Login = () => {
 
       // Enviar token al servidor
       const response = await axios.post(
-        `${server}/api/auth/google-login`,
+        "/api/auth/google-login",
         { idToken },
         { withCredentials: true }
       );

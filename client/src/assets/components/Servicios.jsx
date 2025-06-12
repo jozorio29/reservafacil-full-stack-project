@@ -14,7 +14,7 @@ const Servicios = () => {
     const fetchServicios = async () => {
       try {
         // const token = localStorage.getItem("token");
-        const response = await axios.get(`${server}/api/servicios`, {
+        const response = await axios.get("/api/servicios", {
           withCredentials: true,
         });
         setServicios(response.data);

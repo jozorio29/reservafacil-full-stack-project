@@ -1,5 +1,5 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { server } from "@/constants/config";
+// import { server } from "@/constants/config";
 import axios from "axios";
 import { ArrowLeftCircle, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ const MisReservas = () => {
   const cancelarReserva = async (id) => {
     try {
       await axios.patch(
-        `${server}/api/reservas/${id}/cancelar`,
+        `/api/reservas/${id}/cancelar`,
         {},
         {
           withCredentials: true,
@@ -47,7 +47,7 @@ const MisReservas = () => {
 
   const cargarReservas = async () => {
     try {
-      const res = await axios.get(`${server}/api/reservas/mis-reservas`, {
+      const res = await axios.get("/api/reservas/mis-reservas", {
         withCredentials: true,
       });
       setReservas(res.data);

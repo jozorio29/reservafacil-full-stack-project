@@ -15,7 +15,7 @@ const Barberos = () => {
   useEffect(() => {
     const fetchBarberos = async () => {
       try {
-        const response = await axios.get(`${server}/api/usuarios/barberos`, {
+        const response = await axios.get("/api/usuarios/barberos", {
           withCredentials: true,
         });
         setBarberos(response.data);

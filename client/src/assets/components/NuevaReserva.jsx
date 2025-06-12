@@ -33,10 +33,10 @@ const NuevaReserva = ({ cargarReservas }) => {
     const fetchData = async () => {
       try {
         const [barberosRes, serviciosRes] = await Promise.all([
-          axios.get(`${server}/api/usuarios/barberos`, {
+          axios.get("/api/usuarios/barberos", {
             withCredentials: true,
           }),
-          axios.get(`${server}/api/servicios`, {
+          axios.get("/api/servicios", {
             withCredentials: true,
           }),
         ]);
@@ -61,7 +61,7 @@ const NuevaReserva = ({ cargarReservas }) => {
     const fecha = fechaSeleccionada.toLocaleDateString("sv-SE");
     try {
       const res = await axios.get(
-        `${server}/api/barberos/${barberoSeleccionado}/disponibilidad?fecha=${fecha}`,
+        `/api/barberos/${barberoSeleccionado}/disponibilidad?fecha=${fecha}`,
         { withCredentials: true }
       );
       setBloques(res.data.bloquesDisponibles);
@@ -77,7 +77,7 @@ const NuevaReserva = ({ cargarReservas }) => {
 
     try {
       await axios.post(
-        `${server}/api/reservas`,
+        "/api/reservas",
         {
           barbero: barberoSeleccionado,
           servicio: servicioSeleccionado,

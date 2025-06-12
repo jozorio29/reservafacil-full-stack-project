@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "@/context/AuthContext";
-import { server } from "@/constants/config";
+// import { server } from "@/constants/config";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const FormularioRegistro = () => {
@@ -32,7 +32,7 @@ const FormularioRegistro = () => {
 
     try {
       const response = await axios.post(
-        `${server}/api/auth/registro`,
+        "/api/auth/registro",
         {
           nombre,
           correo,
