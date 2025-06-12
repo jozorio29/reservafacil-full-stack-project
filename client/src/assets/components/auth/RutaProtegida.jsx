@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import axios from "axios";
 import { server } from "@/constants/config";
-import Loader from "@/components/ui/Loader";
+import Loader from "../../pages/Loaders";
 
 const RutaProtegida = () => {
   const [autenticado, setAutenticado] = useState(null);
