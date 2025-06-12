@@ -28,6 +28,13 @@ const proteger = async (req, res, next) => {
   }
 };
 
+const debugCookies = (req, res) => {
+  console.log("🔍 Cookies recibidas en /debug/cookies:", req.cookies);
+  res.json({
+    cookies: req.cookies,
+  });
+};
+
 const soloAdminOBarbero = (req, res, next) => {
   if (!req.usuario) {
     return res.status(401).json({ mensaje: "No hay usuario en la peticion" });
@@ -39,4 +46,4 @@ const soloAdminOBarbero = (req, res, next) => {
   return res.status(403).json({ mensaje: "Acceso denegado" });
 };
 
-export { proteger, soloAdminOBarbero };
+export { proteger, soloAdminOBarbero, debugCookies };

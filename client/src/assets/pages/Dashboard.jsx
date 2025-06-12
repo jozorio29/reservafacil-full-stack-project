@@ -29,6 +29,10 @@ const Dashboard = () => {
     console.log("🌀 useEffect montado en Dashboard");
     const fetchResumen = async () => {
       try {
+        const debugResponse = await axios.get(`${server}/api/auth/cookies`, {
+          withCredentials: true,
+        });
+        console.log("🔍 Cookies de depuración:", debugResponse.data);
         const response = await axios.get(`${server}/api/dashboard/resumen`, {
           withCredentials: true, // ✅ necesario para enviar la cookie
         });
