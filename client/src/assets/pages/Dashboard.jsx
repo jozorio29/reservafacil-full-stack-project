@@ -34,7 +34,7 @@ const Dashboard = () => {
         });
         console.log("🔍 Cookies de depuración:", debugResponse.data);
       } catch (error) {
-        console.error("Error al obtener las cookies de depuración:", error);
+        console.error("Error al obtener las cookies:", error);
       }
       try {
         const response = await axios.get(`${server}/api/dashboard/resumen`, {
