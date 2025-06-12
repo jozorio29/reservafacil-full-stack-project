@@ -33,6 +33,10 @@ const Dashboard = () => {
           withCredentials: true,
         });
         console.log("🔍 Cookies de depuración:", debugResponse.data);
+      } catch (error) {
+        console.error("Error al obtener las cookies de depuración:", error);
+      }
+      try {
         const response = await axios.get(`${server}/api/dashboard/resumen`, {
           withCredentials: true, // ✅ necesario para enviar la cookie
         });
