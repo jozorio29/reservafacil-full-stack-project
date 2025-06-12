@@ -26,18 +26,9 @@ const Dashboard = () => {
     useNotificaciones();
 
   useEffect(() => {
-    console.log("🌀 useEffect montado en Dashboard");
     const fetchResumen = async () => {
       try {
-        const debugResponse = await axios.get("/api/auth/cookies", {
-          withCredentials: true,
-        });
-        console.log("🔍 Cookies de depuración:", debugResponse.data);
-      } catch (error) {
-        console.error("Error al obtener las cookies:", error);
-      }
-      try {
-        const response = await axios.get("/api/dashboard/resumen", {
+        const response = await axios.get(`${server}/api/dashboard/resumen`, {
           withCredentials: true, // ✅ necesario para enviar la cookie
         });
         setResumen(response.data);
