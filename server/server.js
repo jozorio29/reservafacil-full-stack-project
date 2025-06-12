@@ -40,18 +40,6 @@ app.use("/api/usuarios", userRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/barberos", barberoRoutes);
 
-app.use((req, res, next) => {
-  console.log(`🌐 [${req.method}] ${req.originalUrl}`);
-  next();
-});
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', 'https://reservafacil.vercel.app');
-  res.setHeader('Access-Control-Expose-Headers', 'set-cookie');
-  next();
-});
-
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
