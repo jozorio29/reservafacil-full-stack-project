@@ -119,9 +119,10 @@ const PanelBarbero = () => {
   }, {}); // ← importante: el acumulador empieza como un objeto vacío
 
   const formatearFecha = (fecha) => {
-    const [dia, mes, anio] = fecha.split("/"); // "31/12/2025" → ["31", "12", "2025"]
-    const fechaISO = `${anio}-${mes}-${dia}`; // → "2025-12-31"
-    const dateObj = new Date(fechaISO); // Ahora sí es válida
+    const dateObj = new Date(fecha);
+    if (isNaN(dateObj.getTime())) {
+      return "Fecha inválida";
+    }
 
     const fechaFormateada = new Intl.DateTimeFormat("es-ES", {
       weekday: "long",
